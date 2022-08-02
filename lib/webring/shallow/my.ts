@@ -1,5 +1,5 @@
 import type ShallowWebring from '.'
-import webring from '../../../public/webring.json'
+import webring from '../../../data/webring.json'
 
 const myShallowWebring = (url: URL): ShallowWebring => ({
 	deep: false,
