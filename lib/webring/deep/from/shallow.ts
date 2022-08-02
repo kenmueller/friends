@@ -7,7 +7,6 @@ const deepWebringFromShallowWebring = async (
 	webring: ShallowWebring,
 	fetch: Fetch = window.fetch
 ): Promise<DeepWebring> => ({
-	deep: true,
 	url: webring.url,
 	name: webring.name,
 	friends: await Promise.all(
