@@ -49,6 +49,10 @@
 		}
 	}
 
+	[role='button'] {
+		cursor: pointer;
+	}
+
 	svg {
 		display: block;
 	}
