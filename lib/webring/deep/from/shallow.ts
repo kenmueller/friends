@@ -8,9 +8,7 @@ const deepWebringFromShallowWebring = async (
 	fetch: Fetch = window.fetch
 ): Promise<DeepWebring> => {
 	const response = await fetch(
-		`/webring/shallow?friends=${encodeURIComponent(
-			JSON.stringify(webring.friends)
-		)}`
+		`/webrings?urls=${encodeURIComponent(JSON.stringify(webring.friends))}`
 	)
 	if (!response.ok) throw await errorFromResponse(response)
 

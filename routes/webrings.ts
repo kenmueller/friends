@@ -7,12 +7,10 @@ import errorFromValue from '$lib/error/from/value'
 
 export const GET: RequestHandler = async ({ url }) => {
 	try {
-		const friendsString = url.searchParams.get('friends')
+		const urls = url.searchParams.get('urls')
+		if (!urls) throw new HttpError(ErrorCode.BadRequest, 'Invalid URLs')
 
-		if (!friendsString)
-			throw new HttpError(ErrorCode.BadRequest, 'Invalid friends')
-
-		const friends = JSON.parse(friendsString) as string[]
+		const friends = JSON.parse(urls) as string[]
 
 		if (
 			Array.isArray(friends) &&
@@ -21,7 +19,6 @@ export const GET: RequestHandler = async ({ url }) => {
 			return {
 				headers: {
 					'access-control-allow-origin': '*',
-					'cache-control': 'no-cache',
 					'content-type': 'application/json'
 				},
 				body: JSON.stringify(await Promise.all(friends.map(getShallowWebring)))
