@@ -19,7 +19,11 @@ export const GET: RequestHandler = async ({ url }) => {
 			friends.every(friend => typeof friend === 'string' && friend)
 		) {
 			return {
-				headers: { 'content-type': 'application/json' },
+				headers: {
+					'access-control-allow-origin': '*',
+					'cache-control': 'no-cache',
+					'content-type': 'application/json'
+				},
 				body: JSON.stringify(await Promise.all(friends.map(getShallowWebring)))
 			}
 		} else {
