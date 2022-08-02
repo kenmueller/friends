@@ -4,19 +4,21 @@
 
 	export let friend: ShallowWebring | DeepWebring
 	export let onClick: (() => void) | null = null
+
+	$: hostname = friend.url && new URL(friend.url).hostname
 </script>
 
 <article role={onClick ? 'button' : undefined} on:click={onClick}>
 	{#if friend.name}
-		<p>{friend.name || friend.url?.hostname || 'unknown'}</p>
+		<p>{friend.name || hostname || 'unknown'}</p>
 	{/if}
 	<a
-		href={friend.url?.href || friend.name || ''}
+		href={friend.url || friend.name || ''}
 		rel="noopener noreferrer nofollow"
 		target="_blank"
 		on:click|stopPropagation
 	>
-		{friend.url?.hostname || friend.name || 'unknown'}
+		{hostname || friend.name || 'unknown'}
 	</a>
 </article>
 

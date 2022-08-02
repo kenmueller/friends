@@ -1,4 +1,4 @@
 export default interface WebringInfo {
-	url: URL | null
+	url: string | null
 	name: string | null
 }

@@ -33,8 +33,7 @@ const config = {
 		csp: {
 			directives: {
 				'base-uri': ['self'],
-				'default-src': ['self'],
-				'connect-src': ['*']
+				'default-src': ['self']
 			}
 		}
 	}

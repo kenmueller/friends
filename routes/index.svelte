@@ -54,7 +54,7 @@
 		<FriendNode friend={head} />
 	</div>
 	<div class="friends">
-		{#each head.friends as friend (friend.url?.href || friend.name)}
+		{#each head.friends as friend (friend.url || friend.name)}
 			<FriendNode {friend} onClick={() => setHead(friend)} />
 		{:else}
 			<p>No friends</p>
